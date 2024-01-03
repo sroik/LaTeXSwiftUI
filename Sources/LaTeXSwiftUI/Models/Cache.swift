@@ -53,6 +53,7 @@ extension CacheKey {
   
 }
 
+@available(iOS 16.0, *)
 internal class Cache {
   
   // MARK: Types
@@ -99,6 +100,7 @@ internal class Cache {
 
 // MARK: Public methods
 
+@available(iOS 16.0, *)
 extension Cache {
   
   /// Safely access the cache value for the given key.
