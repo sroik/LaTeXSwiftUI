@@ -71,6 +71,11 @@ internal struct Component: CustomStringConvertible, Equatable, Hashable {
     ///
     /// - Example: `\[x^2\]`
     case blockEquation
+      
+    /// A parentheses equation.
+    ///
+    /// - Example: `\(x^2\)`
+    case parenthesesEquation
     
     /// A named equation component.
     ///
@@ -94,6 +99,7 @@ internal struct Component: CustomStringConvertible, Equatable, Hashable {
       case .inlineEquation: return "$"
       case .texEquation: return "$$"
       case .blockEquation: return "\\["
+      case .parenthesesEquation: return "\\("
       case .namedEquation: return "\\begin{equation}"
       case .namedNoNumberEquation: return "\\begin{equation*}"
       }
@@ -106,6 +112,7 @@ internal struct Component: CustomStringConvertible, Equatable, Hashable {
       case .inlineEquation: return "$"
       case .texEquation: return "$$"
       case .blockEquation: return "\\]"
+      case .parenthesesEquation: return "\\)"
       case .namedEquation: return "\\end{equation}"
       case .namedNoNumberEquation: return "\\end{equation*}"
       }
@@ -114,7 +121,7 @@ internal struct Component: CustomStringConvertible, Equatable, Hashable {
     /// Whether or not this component is inline.
     var inline: Bool {
       switch self {
-      case .text, .inlineEquation: return true
+      case .text, .inlineEquation, .parenthesesEquation: return true
       default: return false
       }
     }

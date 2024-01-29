@@ -117,6 +117,13 @@ final class ParserTests: XCTestCase {
     assertComponent(components, 0, equation, .texEquation)
   }
   
+  func testParseParenthesesOnly() {
+    let input = "\\(\\TeX\\)"
+    let components = Parser.parse(input)
+    XCTAssertEqual(components.count, 1)
+    assertComponent(components, 0, "\\TeX", .parenthesesEquation)
+  }
+    
   func testParseBracketsOnly() {
     let input = "\\[\\TeX\\]"
     let components = Parser.parse(input)
